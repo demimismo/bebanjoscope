@@ -1,5 +1,4 @@
 bebanjoscope = {
-    coords: [],
     initialize_reveal: function() {
         Reveal.initialize({
             controls: true,
@@ -13,13 +12,16 @@ bebanjoscope = {
             fragments: false,
             embedded: false,
             transition: 'none',
-            viewDistance: 1
+            viewDistance: 1,
+            width: 500,
+            height: 900,
+            minScale: 1,
+            maxScale: 1
         });
         Reveal.addEventListener('slidechanged', bebanjoscope.update_map);
     },
 
     update_map: function(event) {
-        var cartodb_id = $('section.present').data('cartodb-id');
         var lat = $('section.present').data('lat');
         var lng = $('section.present').data('lng');
         // Reposition the map
