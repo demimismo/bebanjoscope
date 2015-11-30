@@ -48,7 +48,7 @@ bebanjoscope = {
           })        
     },
 
-    hola: function() {
+    init: function() {
         cartodb.createVis('map_canvas', 'https://maloshumos.cartodb.com/api/v2/viz/09443b82-5338-11e5-a69b-0e4fddd5de28/viz.json')
             .done(function(vis, layers) {
                 bebanjoscope.cartodb_layer = layers[1].getSubLayer(0);
@@ -58,4 +58,4 @@ bebanjoscope = {
     }
 }
 
-bebanjoscope.hola();
+bebanjoscope.init();
