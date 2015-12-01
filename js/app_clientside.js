@@ -25,7 +25,7 @@ bebanjoscope = {
         var lat = $('section.present').data('lat');
         var lng = $('section.present').data('lng');
         // Reposition the map
-        bebanjoscope.map.setView([lat, lng], 7);
+        bebanjoscope.map.setView([lat, lng], 4);
         // Move marker
         bebanjoscope.marker.setLatLng(new L.LatLng(lat, lng));
     },
@@ -33,7 +33,7 @@ bebanjoscope = {
     load_data: function() {
         var sql = new cartodb.SQL({ user: 'maloshumos' });
         // Get slide data from CartoDB and generate slides
-        sql.execute("SELECT cartodb_id, ST_X(the_geom) as lng, ST_Y(the_geom) as lat, description, url FROM bebanjoscope order by cartodb_id desc")
+        sql.execute("SELECT cartodb_id, ST_X(the_geom) as lng, ST_Y(the_geom) as lat, description, url FROM bebanjoscope order by creation_date desc")
           .done(function(data) {
             for(var i in data.rows){
                 $('.slides').append([
