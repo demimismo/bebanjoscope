@@ -37,9 +37,13 @@ bebanjoscope = {
                 $('.slides').append([
                     '<section class="entry"  data-cartodb-id="', data.rows[i].cartodb_id,'" data-lat="',data.rows[i].lat,'" data-lng="',data.rows[i].lng,'">',
                         '<div class="content">',
-                            '<h2 class="description">', data.rows[i].description,'</h2>',
-                            '<h3 class="date">2:30 a.m. 5/31</h3>',
-                            '<img src="',data.rows[i].url,'"/>',
+                          '<div class="row">',
+                            '<img src="',data.rows[i].url,'" class="entry-picture"/>',
+                           '</div>',
+                           '<div class="row-bottom">',
+                             '<img src="http://s3.amazonaws.com/production_tiwe/candidates/avatars/000/000/100/thumb/Gary_Monk.png" class="entry-avatar" />',
+                             '<h2 class="description"><span class="entry-time">2:30 a.m. 5/31</span>', data.rows[i].description,'</h2>',
+                           '</div>',
                         '</div>',
                     '</section>'
                 ].join(""));
