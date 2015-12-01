@@ -1,5 +1,12 @@
 bebanjoscope = {
     coords: [],
+    count: 0,
+    playAudio: function(sound) {
+      var audio = document.createElement('audio');
+      audio.src = '/assets/'+sound+'.mp3';
+      audio.play();
+    },
+
     initialize_reveal: function() {
         Reveal.initialize({
             controls: true,
@@ -19,6 +26,7 @@ bebanjoscope = {
     },
 
     update_map: function(event) {
+        var count = 0;
         var cartodb_id = $('section.present').data('cartodb-id');
         var lat = $('section.present').data('lat');
         var lng = $('section.present').data('lng');
@@ -26,6 +34,14 @@ bebanjoscope = {
         bebanjoscope.map.setView([lat, lng], 7);
         // Move marker
         bebanjoscope.marker.setLatLng(new L.LatLng(lat, lng));
+        // Play audio
+        debugger
+        if (bebanjoscope.count === 0) {
+          bebanjoscope.playAudio('imac');
+        } else {
+          bebanjoscope.playAudio('woosh');    
+        }
+        bebanjoscope.count++;
     },
 
     load_data: function() {

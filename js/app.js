@@ -1,5 +1,6 @@
 bebanjoscope = {
-    initialize_reveal: function() {
+
+     initialize_reveal: function() {
         Reveal.initialize({
             controls: true,
             progress: false,
