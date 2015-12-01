@@ -34,8 +34,8 @@ bebanjoscope = {
         bebanjoscope.map.setView([lat, lng], 7);
         // Move marker
         bebanjoscope.marker.setLatLng(new L.LatLng(lat, lng));
+
         // Play audio
-        debugger
         if (bebanjoscope.count === 0) {
           bebanjoscope.playAudio('imac');
         } else {
@@ -74,7 +74,7 @@ bebanjoscope = {
           })
     },
 
-    hola: function() {
+    init: function() {
         // Create map and add one marker
         cartodb.createVis('map_canvas', 'https://maloshumos.cartodb.com/api/v2/viz/09443b82-5338-11e5-a69b-0e4fddd5de28/viz.json')
             .done(function(vis, layers) {
@@ -86,4 +86,4 @@ bebanjoscope = {
     }
 }
 
-bebanjoscope.hola();
+bebanjoscope.init();
