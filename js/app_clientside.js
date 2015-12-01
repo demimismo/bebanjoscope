@@ -33,7 +33,7 @@ bebanjoscope = {
     load_data: function() {
         var sql = new cartodb.SQL({ user: 'maloshumos' });
         // Get slide data from CartoDB and generate slides
-        sql.execute("SELECT cartodb_id, ST_X(the_geom) as lng, ST_Y(the_geom) as lat, description, url FROM bebanjoscope order by creation_date desc")
+        sql.execute("SELECT bebanjoscope.cartodb_id, ST_X(bebanjoscope.the_geom) as lng, ST_Y(bebanjoscope.the_geom) as lat, description, url, avatar_url FROM bebanjoscope, bebanjoscope_users where bebanjoscope.user_id = bebanjoscope_users.cartodb_id order by creation_date desc")
           .done(function(data) {
             for(var i in data.rows){
                 $('.slides').append([
@@ -43,7 +43,7 @@ bebanjoscope = {
                             '<img src="',data.rows[i].url,'" class="entry-picture"/>',
                            '</div>',
                            '<div class="row-bottom">',
-                             '<img src="http://s3.amazonaws.com/production_tiwe/candidates/avatars/000/000/100/thumb/Gary_Monk.png" class="entry-avatar" />',
+                             '<img src="', data.rows[i].avatar_url,'" class="entry-avatar" />',
                              '<h2 class="description"><span class="entry-time">2:30 a.m. 5/31</span>', data.rows[i].description,'</h2>',
                            '</div>',
                         '</div>',
