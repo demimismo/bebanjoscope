@@ -1,9 +1,15 @@
 bebanjoscope = {
-    coords: [],
+    yeehaw: L.icon({
+        iconUrl: 'img/yee-haw.png',
+        iconSize:     [100, 40],
+        iconAnchor:   [15, 40],
+        shadowAnchor: [4, 62],
+        popupAnchor:  [-3, -76]
+    }),
     count: 0,
     playAudio: function(sound) {
       var audio = document.createElement('audio');
-      audio.src = '/assets/'+sound+'.mp3';
+      audio.src = 'assets/'+sound+'.mp3';
       audio.play();
     },
 
@@ -30,12 +36,11 @@ bebanjoscope = {
     },
 
     update_map: function(event) {
-        var count = 0;
         var cartodb_id = $('section.present').data('cartodb-id');
         var lat = $('section.present').data('lat');
         var lng = $('section.present').data('lng');
         // Reposition the map
-        bebanjoscope.map.setView([lat, lng], 4);
+        bebanjoscope.map.setView([lat, lng], 5);
         // Move marker
         bebanjoscope.marker.setLatLng(new L.LatLng(lat, lng));
 
@@ -84,7 +89,7 @@ bebanjoscope = {
             .done(function(vis, layers) {
                 bebanjoscope.map = vis.getNativeMap();
                 // Add a lonely marker
-                bebanjoscope.marker = L.marker([37.71859033, -3.69140625]).addTo(bebanjoscope.map);
+                bebanjoscope.marker = L.marker([37.71859033, -3.69140625],{icon: bebanjoscope.yeehaw} ).addTo(bebanjoscope.map);
                 bebanjoscope.load_data();
             });
     }

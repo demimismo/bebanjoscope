@@ -177,9 +177,3 @@ div.content h3 {
 .leaflet-control-container,
 .controls { display: none!important;}
 
-.leaflet-marker-icon {
-  background: url(/img/yee-haw.png) 0 10px no-repeat;
-  padding-right: 100px;
-  padding-top: 50px;
-}
-
